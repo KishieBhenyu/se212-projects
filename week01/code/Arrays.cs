@@ -31,25 +31,27 @@ public static class Arrays
     /// Rotate the data to the right by the specified amount.
     /// The function modifies the existing list instead of returning a new list.
     /// </summary>
-    public static void RotateListRight(List<int> data, int amount)
-    {
-        // Plan:
-        // 1. Find the index where the last 'amount' elements begin by subtracting
-        //    amount from the total number of elements in the list.
-        // 2. Create a new list containing the last 'amount' elements using GetRange.
-        // 3. Create another list containing the elements before those last elements.
-        // 4. Clear the original list so that it can be rebuilt in the correct order.
-        // 5. Add the last elements to the original list first.
-        // 6. Add the remaining elements after the last elements.
-        // 7. The original list is now rotated to the right by the specified amount.
+  
+public static void RotateListRight(List<int> data, int amount)
+{
+    // Plan:
+    // 1. Calculate the index where the last 'amount' elements begin.
+    // 2. Create a new list containing the last 'amount' elements.
+    // 3. Create another list containing the elements before those last elements.
+    // 4. Clear the original list.
+    // 5. Add the last elements to the original list first.
+    // 6. Add the remaining elements after the last elements.
+    // 7. The original list is now rotated to the right.
 
-        int splitIndex = data.Count - amount;
+    int splitIndex = data.Count - amount;
 
-        List<int> lastElements = data.GetRange(splitIndex, amount);
-        List<int> firstElements = data.GetRange(0, splitIndex);
+    List<int> lastElements = data.GetRange(splitIndex, amount);
+    List<int> firstElements = data.GetRange(0, splitIndex);
 
-        data.Clear();
-        data.AddRange(lastElements);
-        data.AddRange(firstElements);
-    }
+    data.Clear();
+
+    data.AddRange(lastElements);
+    data.AddRange(firstElements);
+}
+
 }
